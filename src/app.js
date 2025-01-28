@@ -11,7 +11,7 @@ app.get('/products', (req, res) => {
         { id: 3, name: 'wrench' },
     ];
 
-    res.json(products);
+    res.json(prts);oduc
 });
 
 app.listen(port, () => {

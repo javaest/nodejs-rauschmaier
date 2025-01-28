@@ -2,7 +2,10 @@ const express = require('express');
 const session = require('express-session');
 const app = express();
 const path = require('path');
-
+let users = [
+  { id: 1, name: 'Alice',password:'test' },
+  { id: 2, name: 'admin',password:'password' }
+];
 // Middleware für JSON Parsing (falls du POST-Daten benötigst)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,6 +18,25 @@ app.use(session({
   cookie: { secure: false }           // Secure setzen, wenn du HTTPS verwendest
 }));
 
+app.get('/signin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'signin.html'));  // Senden der login.html-Seite
+});
+app.post('/signin', (req, res) => {
+  const { name,password } = req.body;
+  if (!name) {
+    return res.status(400).send('Bad Request: Name is required');
+  }
+
+  const newUser = {
+    id: users.length + 1,
+    name: name,
+    password: password
+  };
+
+  users.push(newUser);
+  //res.status(201).json(newUser);
+  return res.redirect('/login');
+});
 // Route für die Login-Seite
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));  // Senden der login.html-Seite
@@ -30,16 +52,16 @@ app.get('/get-username', (req, res) => {
 // Route zum Bearbeiten des Login-Formulars
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-
-  // Einfache Benutzerüberprüfung (dies sollte durch sichere Authentifizierung ersetzt werden)
-  if (username === 'admin' && password === 'password123') {
-    req.session.user = username;  // Speichern des Benutzernamens in der Session
-    return res.redirect('/content');  // Umleitung zur zweiten Seite nach dem Login
-  } else {
-    return res.status(401).send('Falsche Anmeldedaten');  // Fehlermeldung, wenn die Anmeldedaten falsch sind
+  for(let i =0;i<users.length;i++) {
+    if(users[i].password==password && users[i].name==username){
+      req.session.user = username; 
+      return res.redirect('/content');
+    }
+    
   }
-});
+  return res.status(401).send('Benutzername oder Passwort falsch');
 
+});
 // Route für die "Context"-Seite nach dem Login
 app.get('/content', (req, res) => {
   if (!req.session.user) {

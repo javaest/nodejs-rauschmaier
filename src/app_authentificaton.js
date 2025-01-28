@@ -15,7 +15,7 @@ function isAuthorized(req, res, next) {
 
 app.get('/', isAuthorized, (req, res) => res.send('Hello World!'));
 
-app.get('/users', (req, res) => {
+app.get('/users', isAuthorized,(req, res) => {
   res.json([
     {
       id: 1,
