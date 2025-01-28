@@ -1,4 +1,5 @@
 # Vergleich: Basic Authentication, Session-basierte Authentifizierung, JWT
+Siehe [https://blog.logto.io/de/token-based-authentication-vs-session-based-authentication][https://blog.logto.io/de/token-based-authentication-vs-session-based-authentication]
 
 | **Kriterium**            | **Basic Authentication**                                   | **Session-basierte Authentifizierung**                        | **JWT (JSON Web Token)**                                     |
 |---------------------------|----------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------------------|
