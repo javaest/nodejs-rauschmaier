@@ -18,29 +18,13 @@ app.use(session({
   cookie: { secure: false }           // Secure setzen, wenn du HTTPS verwendest
 }));
 
-app.get('/signin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'signin.html'));  // Senden der login.html-Seite
-});
-app.post('/signin', (req, res) => {
-  const { name,password } = req.body;
-  if (!name) {
-    return res.status(400).send('Bad Request: Name is required');
-  }
 
-  const newUser = {
-    id: users.length + 1,
-    name: name,
-    password: password
-  };
-
-  users.push(newUser);
-  //res.status(201).json(newUser);
-  return res.redirect('/login');
-});
 // Route für die Login-Seite
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));  // Senden der login.html-Seite
 });
+
+// Endpoint 
 app.get('/get-username', (req, res) => {
     if (req.session.user) {
       res.json({ username: req.session.user });  // Sendet den Benutzernamen an den Client
@@ -49,16 +33,14 @@ app.get('/get-username', (req, res) => {
     }
   });
   
-// Route zum Bearbeiten des Login-Formulars
+// Endpoint zum prüfen des Creadentials
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  for(let i =0;i<users.length;i++) {
-    if(users[i].password==password && users[i].name==username){
+    if(password=="test" && username=="admin"){
       req.session.user = username; 
       return res.redirect('/content');
     }
     
-  }
   return res.status(401).send('Benutzername oder Passwort falsch');
 
 });
