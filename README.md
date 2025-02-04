@@ -6,7 +6,7 @@ In der folgenden Aufgabe soll eine Webseite mit den folgenden Seiten erstellt we
 
 2. **Registrierungsseite**: Auf dieser Seite hat der Benutzer die Möglichkeit, sich mit einem neuen Benutzernamen und Passwort zu registrieren.
 
-3. **Login-Seite**: Auf dieser Seite kann sich der Benutzer mit seinem Benutzernamen und Passwort anmelden. Nach einer erfolgreichen Anmeldung erfolgt eine Weiterleitung zur **Inhaltsseite**.
+3. **Login-Seite**: Auf dieser Seite kann sich der Benutzer mit seinem Benutzernamen und Passwort anmelden. Nach einer erfolgreichen Anmeldung erfolgt eine Weiterleitung zur **Content-Seite**.
 
 4. **Content-Seite**: Zeigt den Inhalt sowie den Benutzernamen an, wenn eine Session existiert.
 
