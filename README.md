@@ -2,7 +2,7 @@
 
 In der folgenden Aufgabe soll eine Webseite mit den folgenden Seiten erstellt werden:
 
-1. **Startseite**: Diese Seite zeigt an, ob der Benutzer angemeldet ist oder nicht. Ist der Benutzer angemeldet, wird ein Link zum Inhalt angezeigt. Ist der Benutzer nicht angemeldet, sollen Links zur **Registrierungsseite** und zur **Login-Seite** eingeblendet werden. Ändern Sie hierzu mittels DOM-Manipulation das `innerHTML`-Attribut, um HTML-Tags mit Verlinkungen zu den jeweiligen Seiten einzufügen.
+1. **Startseite**: Diese Seite zeigt an, ob der Benutzer angemeldet ist oder nicht. Ist der Benutzer angemeldet, wird ein Link zum Inhalt angezeigt. Ist der Benutzer nicht angemeldet, sollen Links zur **Registrierungsseite** und zur **Login-Seite** eingeblendet werden. Ändern Sie hierzu mittels DOM-Manipulation das `innerHTML`-Attribut, um HTML-Tags mit Verlinkungen zu den jeweiligen Seiten einzufügen (siehe JS-Logig der content.html Seite).
 
 2. **Registrierungsseite**: Auf dieser Seite hat der Benutzer die Möglichkeit, sich mit einem neuen Benutzernamen und Passwort zu registrieren.
 
