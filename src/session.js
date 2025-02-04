@@ -37,6 +37,10 @@ app.post('/signin', (req, res) => {
   //res.status(201).json(newUser);
   return res.redirect('/login');
 });
+// Route für die Startseite
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'index.html'));  // Senden der login.html-Seite
+});
 // Route für die Login-Seite
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));  // Senden der login.html-Seite

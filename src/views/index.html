@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontext</title>
+</head>
+<body onload="loadContent()">
+  <h1>Startseite</h1>
+  <p id="login"></p>
+  <script>
+    // Diese Funktion wird beim Laden der Seite ausgeführt
+    function loadContent() {
+      // Fetch-Request, um den Benutzernamen vom Server zu erhalten
+      fetch('/get-username')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Benutzer nicht angemeldet');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Setze den Benutzernamen in das HTML-Element
+          document.getElementById('login').innerHTML = 'Sie sind angemeldet. Klicken Sie <a href="/content">hier</a>, um den Inhalt darzustellen';
+        })
+        .catch(error => {
+          document.getElementById('login').innerHTML = 'Zum <a href="/login">Anmelden</a> hier klicken. Zum <a href="/signin">Registrieren</a> hier klicken';
+          console.error('Fehler:', error);
+        });
+    }
+  </script>
+</body>
+</html>
